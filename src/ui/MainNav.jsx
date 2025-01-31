@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { TiHomeOutline } from "react-icons/ti";
 import { TiCalendarOutline } from "react-icons/ti";
 import {
-  HiOutlineCog6Tooth,
   HiOutlineCog8Tooth,
   HiOutlineHomeModern,
   HiOutlineUsers,

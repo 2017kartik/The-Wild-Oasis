@@ -1,4 +1,8 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyle";
 import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
@@ -20,27 +24,56 @@ const queryClient = new QueryClient({
   },
 });
 
+const router = createBrowserRouter([
+  {
+    element: <AppLayout />,
+    children: [
+      {
+        index: true,
+        element: <Navigate replace to="dashboard" />,
+      },
+      {
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "bookings",
+        element: <Bookings />,
+      },
+      {
+        path: "cabins",
+        element: <Cabins />,
+      },
+      {
+        path: "users",
+        element: <Users />,
+      },
+      {
+        path: "settings",
+        element: <Settings />,
+      },
+      {
+        path: "account",
+        element: <Account />,
+      },
+    ],
+  },
+  {
+    path: "login",
+    element: <Login />,
+  },
+  {
+    path: "*",
+    element: <PageNotFound />,
+  },
+]);
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <GlobalStyles />
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            {/*Layout Route */}
-            <Route index element={<Navigate replace to="dashboard" />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="bookings" element={<Bookings />} />
-            <Route path="cabins" element={<Cabins />} />
-            <Route path="users" element={<Users />} />
-            <Route path="settings" element={<Settings />} />
-            <Route path="account" element={<Account />} />
-          </Route>
-          <Route path="login" element={<Login />} />
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }

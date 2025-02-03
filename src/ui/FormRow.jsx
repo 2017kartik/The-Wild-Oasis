@@ -48,7 +48,7 @@ const FormRow = ({ label, error, children }) => (
 FormRow.propTypes = {
   label: PropTypes.string,
   error: PropTypes.string,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default FormRow;

@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { useCreateCabin } from "./useCreateCabin";
 import { useEditCabin } from "./useEditCabin";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModal }) {
   const { id: editId, ...editValues } = cabinToEdit;
 
   const isEditSession = Boolean(editId);
@@ -49,7 +49,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit, onError)}
+      type={onCloseModal ? "modal" : "regular"}
+    >
       <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"
@@ -131,7 +134,11 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModal?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
@@ -146,7 +153,7 @@ export default CreateCabinForm;
 
 CreateCabinForm.propTypes = {
   cabinToEdit: PropTypes.shape({
-    id: PropTypes.number, // Assuming `id` is a number
+    id: PropTypes.number,
     name: PropTypes.string,
     maxCapacity: PropTypes.number,
     regularPrice: PropTypes.number,
@@ -154,4 +161,5 @@ CreateCabinForm.propTypes = {
     description: PropTypes.string,
     image: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   }),
+  onCloseModal: PropTypes.func,
 };

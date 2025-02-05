@@ -89,8 +89,12 @@ BookingRow.propTypes = {
   booking: PropTypes.shape({
     id: PropTypes.number.isRequired,
     created_at: PropTypes.string.isRequired,
-    startDate: PropTypes.instanceOf(Date).isRequired,
-    endDate: PropTypes.instanceOf(Date).isRequired,
+    startDate: PropTypes.oneOfType([
+      PropTypes.instanceOf(Date),
+      PropTypes.string,
+    ]).isRequired,
+    endDate: PropTypes.oneOfType([PropTypes.instanceOf(Date), PropTypes.string])
+      .isRequired,
     numNights: PropTypes.number.isRequired,
     numGuests: PropTypes.number.isRequired,
     totalPrice: PropTypes.number.isRequired,

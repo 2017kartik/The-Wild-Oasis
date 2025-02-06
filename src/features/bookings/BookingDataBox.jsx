@@ -11,6 +11,7 @@ import DataItem from "../../ui/DataItem";
 import { Flag } from "../../ui/Flag";
 
 import { formatDistanceFromNow, formatCurrency } from "../../utils/helpers";
+import PropTypes from "prop-types";
 
 const StyledBookingDataBox = styled.section`
   /* Box */
@@ -185,3 +186,29 @@ function BookingDataBox({ booking }) {
 }
 
 export default BookingDataBox;
+
+BookingDataBox.propTypes = {
+  booking: PropTypes.shape({
+    created_at: PropTypes.instanceOf(Date).isRequired,
+    startDate: PropTypes.instanceOf(Date).isRequired,
+    endDate: PropTypes.instanceOf(Date).isRequired,
+    numNights: PropTypes.number.isRequired,
+    numGuests: PropTypes.number.isRequired,
+    cabinPrice: PropTypes.number.isRequired,
+    extrasPrice: PropTypes.number.isRequired,
+    totalPrice: PropTypes.number.isRequired,
+    hasBreakfast: PropTypes.bool.isRequired,
+    observations: PropTypes.string,
+    isPaid: PropTypes.bool.isRequired,
+    guests: PropTypes.shape({
+      fullName: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      countryFlag: PropTypes.string,
+      nationalID: PropTypes.string.isRequired,
+    }).isRequired,
+    cabins: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};

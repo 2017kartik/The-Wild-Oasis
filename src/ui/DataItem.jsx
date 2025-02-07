@@ -27,7 +27,7 @@ function DataItem({ icon, label, children }) {
       <Label>
         {icon}
         <span>{label}</span>
-      </Label>
+      </Label> 
       {children}
     </StyledDataItem>
   );

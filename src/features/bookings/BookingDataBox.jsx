@@ -46,7 +46,7 @@ const Header = styled.header`
   }
 
   & span {
-    font-family: "Sono";
+    font-family: "Inter";
     font-size: 2rem;
     margin-left: 4px;
   }
@@ -189,9 +189,18 @@ export default BookingDataBox;
 
 BookingDataBox.propTypes = {
   booking: PropTypes.shape({
-    created_at: PropTypes.instanceOf(Date).isRequired,
-    startDate: PropTypes.instanceOf(Date).isRequired,
-    endDate: PropTypes.instanceOf(Date).isRequired,
+    created_at: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date),
+    ]).isRequired,
+    startDate: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date),
+    ]).isRequired,
+    endDate: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date),
+    ]).isRequired,
     numNights: PropTypes.number.isRequired,
     numGuests: PropTypes.number.isRequired,
     cabinPrice: PropTypes.number.isRequired,

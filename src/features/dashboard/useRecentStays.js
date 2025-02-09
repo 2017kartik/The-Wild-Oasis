@@ -3,7 +3,7 @@ import { subDays } from "date-fns";
 import { useSearchParams } from "react-router-dom";
 import { getStaysAfterDate } from "../../services/apiBookings";
 
-export function useRecentBookings() {
+export function useRecentStays() {
   const [searchParams] = useSearchParams();
 
   const numDays = !searchParams.get("last")
@@ -14,12 +14,12 @@ export function useRecentBookings() {
 
   const { isLoading, data: stays } = useQuery({
     queryFn: () => getStaysAfterDate(queryDate),
-    queryKey: ["bookings", `last-${numDays}`],
+    queryKey: ["stays", `last-${numDays}`],
   });
 
   const confirmedStays = stays?.filter(
     (stay) => stay.status === "checked-in" || stay.status === "checked-out"
   );
 
-  return { isLoading, stays, confirmedStays };
+  return { isLoading, stays, confirmedStays, numDays };
 }

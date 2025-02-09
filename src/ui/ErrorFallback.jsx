@@ -41,7 +41,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
       <StyledErrorFallback>
         <Box>
           <Heading as="h1">Something went wrong 🤨!</Heading>
-          <p>{error.message}</p>
+          <p>{error?.message || "An unknown error occurred."}</p>
           <Button size="large" onClick={resetErrorBoundary}>
             Try again
           </Button>
@@ -52,7 +52,10 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 }
 
 ErrorFallback.propTypes = {
-  error: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  error: PropTypes.shape({
+    message: PropTypes.string,
+  }).isRequired,
+  resetErrorBoundary: PropTypes.func.isRequired,
 };
 
 export default ErrorFallback;

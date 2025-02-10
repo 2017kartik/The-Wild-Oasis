@@ -33,6 +33,7 @@ The Wild Oasis is a modern and efficient hotel management system designed to str
 
 ## Tech Stack
 - **Frontend:** React (Vite), JavaScript, Tailwind CSS
+- **Backend:** Supabase
 - **State Management:** React Context API
 - **Routing:** React Router
 - **API Handling:** Axios, React Query

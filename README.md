@@ -3,7 +3,7 @@
 ![The Wild Oasis Logo](public/logo-light.png)
 
 ## Overview
-The Wild Oasis is a modern and efficient hotel management system designed to streamline bookings, check-ins, check-outs, and guest management. This project leverages **React (Vite)**, **Tailwind CSS**, and **custom hooks** to provide a seamless user experience. The platform is structured to ensure optimal performance, maintainability, and scalability.
+The Wild Oasis is a modern and efficient hotel management system designed to streamline bookings, check-ins, check-outs, and guest management. This project leverages **React (Vite)**, **Supabase**, **Styled-Components**, **React Query** and **custom hooks** to provide a seamless user experience. The platform is structured to ensure optimal performance, maintainability, and scalability.
 
 ## Features
 - **Authentication & Authorization**
@@ -32,7 +32,7 @@ The Wild Oasis is a modern and efficient hotel management system designed to str
   - Optimized data fetching with React Query
 
 ## Tech Stack
-- **Frontend:** React (Vite), JavaScript, Tailwind CSS
+- **Frontend:** React (Vite), JavaScript, Styled-Components
 - **Backend:** Supabase
 - **State Management:** React Context API
 - **Routing:** React Router
